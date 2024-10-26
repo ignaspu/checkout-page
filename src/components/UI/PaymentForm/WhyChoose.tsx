@@ -1,7 +1,6 @@
 import Cashback from "../../svg/Cashback";
 import Customer from "../../svg/Customer";
 import Rating from "../../svg/Rating";
-import Shortline from "../../svg/Shortline";
 import "./whychoose.css";
 
 const WhyChoose = () => {
