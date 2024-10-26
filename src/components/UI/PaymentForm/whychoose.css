@@ -1,0 +1,50 @@
+.whyText {
+  color: #333;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  margin-bottom: 0;
+}
+
+.textBorder {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+}
+
+.textBorder h4 {
+  padding: 0 16px;
+  position: relative;
+  z-index: 1;
+}
+
+.textBorder::before,
+.textBorder::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background-color: #E0E0E0;
+  margin: 0;
+}
+
+.whyHeading {
+  margin-bottom: 8px;
+  color: #333;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 16px;
+}
+
+.whyPar {
+  color: #5c5c5c;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+}
+
+.iconSize {
+  width: 32px;
+  height: 32px;
+}

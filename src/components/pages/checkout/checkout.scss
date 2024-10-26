@@ -1,0 +1,52 @@
+@media (min-width: 992px) {
+  .leftSide {
+    min-width: 597px;
+    margin-left: 38px;
+
+    > div {
+      border-bottom: 0px;
+    }
+
+    [class*="orderContainer"] {
+      border: none;
+      padding: 0 38px 16px 0 !important;
+    }
+
+    .contactContainer {
+      border: none;
+      padding: 40px 38px 16px 0 !important;
+    }
+  }
+
+  .leftSidePanel {
+    height: 100vh;
+    align-items: flex-end;
+    background-color: #fff;
+  }
+
+  .desktopLayout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .aside {
+    order: 2;
+    background-color: #f5f5f5;
+    max-width: 443px;
+    margin-right: 38px;
+    border-left: 1px solid #e0e0e0;
+
+    div.containerWhyChoose {
+      padding: 0px 0px 0px 38px !important;
+    }
+
+    > [class*="collapse"] {
+      padding: 40px 0px 24px 38px !important;
+
+      > div.productOrder {
+        border-top: none !important;
+        padding-top: 0px !important;
+      }
+    }
+  }
+}
