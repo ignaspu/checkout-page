@@ -1,5 +1,5 @@
-import Logo from "../../svg/Logo";
-import ShoppingBag from "../../svg/ShoppingBag";
+import Logo from "../../../svg/Logo";
+import ShoppingBag from "../../../svg/ShoppingBag";
 import "./navigation.scss";
 
 const Navigation = () => {

@@ -4,16 +4,16 @@ import "./contact.css";
 import { useEffect, useState } from "react";
 import * as Yup from "yup";
 import { useFormik } from "formik";
-import Amex from "../../svg/Amex";
-import Group from "../../svg/Group";
-import Gsvg from "../../svg/Gsvg";
-import Visa from "../../svg/Visa";
-import Lock from "../../svg/Lock";
-import Four from "../../svg/Four";
-import countriesAndStates from "../../utils/countries";
-import WhyChoose from "./WhyChoose";
-import useIsDesktop from "../../utils/screen";
-import Circle from "../../svg/Circle";
+import Amex from "../../../svg/Amex";
+import Group from "../../../svg/Group";
+import Gsvg from "../../../svg/Gsvg";
+import Visa from "../../../svg/Visa";
+import Lock from "../../../svg/Lock";
+import Four from "../../../svg/Four";
+import countriesAndStates from "../../../utils/countries";
+import WhyChoose from "../WhyChoose/WhyChoose";
+import useIsDesktop from "../../../utils/screen";
+import Circle from "../../../svg/Circle";
 
 const Payment = () => {
   const isDesktopSize = useIsDesktop();

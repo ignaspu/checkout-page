@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { Collapse, Button } from "react-bootstrap";
-import product from "../../images/Product.png";
+import product from "../../../images/Product.png";
 import "./orderoverview.css";
-import Arrow from "../../svg/Arrow";
-import useIsDesktop from "../../utils/screen";
-import WhyChoose from "../PaymentForm/WhyChoose";
+import Arrow from "../../../svg/Arrow";
+import useIsDesktop from "../../../utils/screen";
+import WhyChoose from "../WhyChoose/WhyChoose";
 
 const OrderOverview = () => {
   const [open, setOpen] = useState<boolean>(false);

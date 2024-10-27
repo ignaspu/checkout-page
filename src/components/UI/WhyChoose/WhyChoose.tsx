@@ -1,6 +1,6 @@
-import Cashback from "../../svg/Cashback";
-import Customer from "../../svg/Customer";
-import Rating from "../../svg/Rating";
+import Cashback from "../../../svg/Cashback";
+import Customer from "../../../svg/Customer";
+import Rating from "../../../svg/Rating";
 import "./whychoose.css";
 
 const WhyChoose = () => {

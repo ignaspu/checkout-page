@@ -2,7 +2,7 @@
   .leftSide {
     min-width: 597px;
 
-    > div {
+    >div {
       border-bottom: 0px;
     }
 
@@ -32,7 +32,7 @@
     grid-column: 2 / 3;
     border-left: 1px solid #e0e0e0;
 
-    > div {
+    >div {
       [class*="totalBorder"] {
         border-bottom: none !important;
       }
@@ -42,10 +42,10 @@
       padding: 0px 0px 0px 38px !important;
     }
 
-    > [class*="collapse"] {
+    >[class*="collapse"] {
       padding: 40px 0px 24px 38px !important;
 
-      > div.productOrder {
+      >div.productOrder {
         border-top: none !important;
         padding-top: 0px !important;
       }
