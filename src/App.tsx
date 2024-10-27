@@ -1,9 +1,9 @@
-import CheckOut from "./components/pages/checkout/CheckOut";
+import Main from "./components/pages/Media/Main";
 import "./index.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
 function App() {
-  return <CheckOut />;
+  return <Main />;
 }
 
 export default App;

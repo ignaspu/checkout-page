@@ -22,10 +22,10 @@
 
 .textBorder::before,
 .textBorder::after {
-  content: '';
+  content: "";
   flex: 1;
   height: 1px;
-  background-color: #E0E0E0;
+  background-color: #e0e0e0;
   margin: 0;
 }
 

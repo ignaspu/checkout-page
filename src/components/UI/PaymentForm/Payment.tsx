@@ -13,25 +13,23 @@ import Four from "../../svg/Four";
 import countriesAndStates from "../../utils/countries";
 import WhyChoose from "./WhyChoose";
 import useIsDesktop from "../../utils/screen";
+import Circle from "../../svg/Circle";
 
 const Payment = () => {
   const isDesktopSize = useIsDesktop();
-
   const [country, setCountry] = useState<string>("");
   const [state, setState] = useState<string>("");
-
-  useEffect(() => {
-    const firstCountry = Object.keys(countriesAndStates)[0];
-    if (firstCountry) {
-      setCountry(firstCountry);
-    }
-  }, [countriesAndStates]);
+  const firstCountry = Object.keys(countriesAndStates)[0];
+  const firstState = countriesAndStates[firstCountry]?.[0];
+  const states = countriesAndStates[country] || [];
 
   const handleCountryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const statesList = countriesAndStates[e.target.value];
+    const firstState = statesList && statesList.length > 0 ? statesList[0] : "";
     setCountry(e.target.value);
-    setState("");
+    setState(firstState);
     formik.setFieldValue("country", e.target.value);
-    formik.setFieldValue("state", "");
+    formik.setFieldValue("state", firstState);
   };
 
   const handleStateChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -39,7 +37,16 @@ const Payment = () => {
     formik.setFieldValue("state", e.target.value);
   };
 
-  const states = countriesAndStates[country] || [];
+  useEffect(() => {
+    if (firstCountry) {
+      setCountry(firstCountry);
+      if (firstState) {
+        setState(firstState);
+        formik.setFieldValue("state", firstState);
+      }
+      formik.setFieldValue("country", firstCountry);
+    }
+  }, [countriesAndStates]);
 
   const formik = useFormik({
     initialValues: {
@@ -47,10 +54,9 @@ const Payment = () => {
       lastName: "",
       email: "",
       address: "",
-      country: "",
-      state: "",
+      country: firstCountry,
+      state: firstState,
       zip: "",
-      paymentMethod: "",
       cardNumber: "",
       expiration: "",
       securityCode: "",
@@ -66,8 +72,8 @@ const Payment = () => {
       zip: Yup.string()
         .required("ZIP/Postal Code is required")
         .matches(/^\d{5}(-\d{4})?$/, "Must be a valid ZIP code"),
-      country: Yup.string().required("Country is required"),
-      state: Yup.string().required("State/Province is required"),
+      country: Yup.string(),
+      state: Yup.string(),
       cardNumber: Yup.string()
         .matches(
           /^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|6(?:011|5[0-9]{2})[0-9]{12}|7[0-9]{15})$/,
@@ -86,9 +92,10 @@ const Payment = () => {
       nameOnCard: Yup.string().required("Name on card is required"),
     }),
     onSubmit: (values, { resetForm }) => {
-      console.log(values);
       localStorage.setItem("paymentDetails", JSON.stringify(values));
       resetForm();
+      setCountry(firstCountry);
+      setState(firstState);
     },
   });
 
@@ -111,7 +118,7 @@ const Payment = () => {
             ) : null}
           </div>
         </div>
-        <div className="p-3 bgColorWhite orderContainer">
+        <div className="p-3 bgWhiteBorders orderContainer">
           <h3 style={{ marginBottom: "12px" }} className="contact">
             Delivery
           </h3>
@@ -171,9 +178,6 @@ const Payment = () => {
                 </select>
                 <label htmlFor="floatingSelect">State / Province</label>
               </div>
-              {formik.touched.state && formik.errors.state ? (
-                <div className="formikValidation">{formik.errors.state}</div>
-              ) : null}
             </div>
 
             <div className="col">
@@ -205,22 +209,17 @@ const Payment = () => {
               </select>
               <label htmlFor="floatingSelectGrid">Country</label>
             </div>
-            {formik.touched.country && formik.errors.country ? (
-              <div className="formikValidation">{formik.errors.country}</div>
-            ) : null}
           </div>
         </div>
-        <div className="p-3 bgColorWhite mt-3 orderContainer">
+        <div className="p-3 bgWhiteBorders mt-3 orderContainer">
           <div>
             <h3 className="contact mb-2">Payment</h3>
             <p className="securedPaymentsText">
               All transactions are secure and encrypted.
             </p>
-            <div
-              className={`p-3 d-flex justify-content-between borderRadiusPayment`}
-            >
-              <div className="d-flex gap-3">
-                <input className="form-check-input" type="radio" checked />
+            <div className="p-3 d-flex justify-content-between borderRadiusPayment flex-wrap">
+              <div className="d-flex gap-3 align-items-center">
+                <Circle />
                 <div>Credit Card</div>
               </div>
               <div className="d-flex" style={{ gap: "3px" }}>

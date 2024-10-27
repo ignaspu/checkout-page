@@ -5,7 +5,7 @@ const isDesktop = () => {
 };
 
 const useIsDesktop = () => {
-  const [isDesktopSize, setIsDesktopSize] = useState(isDesktop());
+  const [isDesktopSize, setIsDesktopSize] = useState<boolean>(isDesktop());
 
   useEffect(() => {
     const handleResize = () => setIsDesktopSize(isDesktop());

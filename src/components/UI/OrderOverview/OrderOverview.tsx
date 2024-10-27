@@ -7,10 +7,12 @@ import useIsDesktop from "../../utils/screen";
 import WhyChoose from "../PaymentForm/WhyChoose";
 
 const OrderOverview = () => {
-  const [open, setOpen] = useState(false);
-  const [price, setPrice] = useState(299.97);
-  const [quantity, setQuantity] = useState(3);
-  const [productName, setProductName] = useState("LogoIpsum IPL + Warranty");
+  const [open, setOpen] = useState<boolean>(false);
+  const [price, setPrice] = useState<number>(299.97);
+  const [quantity, setQuantity] = useState<number>(3);
+  const [productName, setProductName] = useState<string>(
+    "LogoIpsum IPL + Warranty",
+  );
   const isDesktopSize = useIsDesktop();
 
   return (
@@ -32,7 +34,7 @@ const OrderOverview = () => {
           <div className="overviewTotal">${price}</div>
         </div>
       )}
-      <div className="aside">
+      <div className="rside">
         <Collapse in={open || isDesktopSize}>
           <div className="p-3 bgColor">
             <div className="d-flex justify-content-between align-items-center border-bottom border-top pt-3 pb-3 productOrder">
@@ -52,7 +54,7 @@ const OrderOverview = () => {
               <span className="textName">${price}</span>
             </div>
 
-            <div className="d-flex justify-content-between align-items-center border-bottom pt-3 pb-3">
+            <div className="d-flex justify-content-between align-items-center border-bottom pt-3 pb-3 totalBorder">
               <span className="total">Total</span>
               <span className="total">${price}</span>
             </div>

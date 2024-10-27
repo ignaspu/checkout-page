@@ -1,7 +1,6 @@
 @media (min-width: 992px) {
   .leftSide {
     min-width: 597px;
-    margin-left: 38px;
 
     > div {
       border-bottom: 0px;
@@ -18,23 +17,26 @@
     }
   }
 
-  .leftSidePanel {
-    height: 100vh;
+  .lside {
     align-items: flex-end;
+    grid-column: 1 / 2;
     background-color: #fff;
+    padding-left: 38px;
   }
 
-  .desktopLayout {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .aside {
+  .rside {
     order: 2;
     background-color: #f5f5f5;
     max-width: 443px;
     margin-right: 38px;
+    grid-column: 2 / 3;
     border-left: 1px solid #e0e0e0;
+
+    > div {
+      [class*="totalBorder"] {
+        border-bottom: none !important;
+      }
+    }
 
     div.containerWhyChoose {
       padding: 0px 0px 0px 38px !important;
