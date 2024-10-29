@@ -6,7 +6,7 @@ export interface Product {
   name: string;
   price: number;
   quantity: number;
-  image: any;
+  image: string;
 }
 
 interface ProductProviderProps {
@@ -18,6 +18,7 @@ interface ProductContextType {
   setProducts: React.Dispatch<React.SetStateAction<Product[]>>;
   totalAmount: number;
 }
+
 export const ProductContext = createContext<ProductContextType | undefined>(
   undefined,
 );

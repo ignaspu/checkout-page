@@ -98,7 +98,7 @@ const Payment = () => {
     onSubmit: (values, { resetForm }) => {
       const orderDetails = {
         ...values,
-        products,
+        products: products.map(({ image, ...rest }) => rest),
         totalAmount: totalAmount?.toFixed(2),
       };
       localStorage.setItem("orderDetails", JSON.stringify(orderDetails));
