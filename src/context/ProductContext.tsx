@@ -1,7 +1,7 @@
 import React, { createContext, ReactNode, useMemo, useState } from "react";
 import productImage from "../../src/images/Product.png";
 
-export interface Product {
+interface Product {
   id: number;
   name: string;
   price: number;

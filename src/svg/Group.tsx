@@ -9,7 +9,6 @@ const Group: React.FC = () => {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      {/* Rectangle SVG */}
       <rect
         x="0.25"
         y="0.25"
@@ -18,10 +17,9 @@ const Group: React.FC = () => {
         fill="white"
         stroke="#E0E0E0"
         strokeWidth="0.5"
-        rx="3" // optional rounded corners
+        rx="3"
       />
 
-      {/* Icon SVG centered in the rectangle */}
       <svg
         x="6.5"
         y="3"

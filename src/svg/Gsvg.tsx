@@ -9,7 +9,6 @@ const Gsvg: React.FC = () => {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      {/* Rectangle SVG */}
       <rect
         x="0.25"
         y="0.25"
@@ -18,13 +17,12 @@ const Gsvg: React.FC = () => {
         fill="white"
         stroke="#E0E0E0"
         strokeWidth="0.5"
-        rx="3" // optional rounded corners
+        rx="3"
       />
 
-      {/* Centered Icon SVG */}
       <svg
-        x="3.5" // Center horizontally: (37 - 30) / 2
-        y="2" // Center vertically: (24 - 20) / 2
+        x="3.5"
+        y="2"
         width="30"
         height="20"
         viewBox="0 0 30 20"
