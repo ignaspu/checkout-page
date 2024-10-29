@@ -1,19 +1,21 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Collapse, Button } from "react-bootstrap";
-import product from "../../../images/Product.png";
 import "./orderoverview.css";
 import Arrow from "../../../svg/Arrow";
 import useIsDesktop from "../../../utils/screen";
 import WhyChoose from "../WhyChoose/WhyChoose";
+import { ProductContext } from "../../../context/ProductContext";
 
 const OrderOverview = () => {
-  const [open, setOpen] = useState<boolean>(false);
-  const [price, setPrice] = useState<number>(299.97);
-  const [quantity, setQuantity] = useState<number>(3);
-  const [productName, setProductName] = useState<string>(
-    "LogoIpsum IPL + Warranty",
-  );
+  const context = useContext(ProductContext);
   const isDesktopSize = useIsDesktop();
+  const [open, setOpen] = useState<boolean>(false);
+
+  if (!context) {
+    return null;
+  }
+
+  const { products, totalAmount } = context;
 
   return (
     <>
@@ -31,32 +33,38 @@ const OrderOverview = () => {
               <Arrow open={open} />
             </Button>
           </div>
-          <div className="overviewTotal">${price}</div>
+          <div className="overviewTotal">${totalAmount.toFixed(2)}</div>
         </div>
       )}
       <div className="rside">
         <Collapse in={open || isDesktopSize}>
           <div className="p-3 bgColor">
-            <div className="d-flex justify-content-between align-items-center border-bottom border-top pt-3 pb-3 productOrder">
-              <div className="d-flex align-items-center gap-3">
-                <div className="productContainer">
-                  <img src={product} alt="Product image" />
-                  <div className="badgeQuantity badgeText">{quantity}</div>
+            {products.map((product) => (
+              <div
+                key={product.id}
+                className="d-flex justify-content-between align-items-center border-bottom border-top pt-3 pb-3 productOrder"
+              >
+                <div className="d-flex align-items-center gap-3">
+                  <div className="productContainer">
+                    <img src={product.image} alt={product.name} />
+                    <div className="badgeQuantity badgeText">
+                      {product.quantity}
+                    </div>
+                  </div>
+                  <span className="product">{product.name}</span>
                 </div>
-
-                <span className="product">{productName}</span>
+                <span>${(product.price * product.quantity).toFixed(2)}</span>
               </div>
-              <span>${price}</span>
-            </div>
+            ))}
 
             <div className="d-flex justify-content-between align-items-center border-bottom pt-3 pb-3">
               <span className="textName">Subtotal</span>
-              <span className="textName">${price}</span>
+              <span className="textName">${totalAmount.toFixed(2)}</span>
             </div>
 
             <div className="d-flex justify-content-between align-items-center border-bottom pt-3 pb-3 totalBorder">
               <span className="total">Total</span>
-              <span className="total">${price}</span>
+              <span className="total">${totalAmount.toFixed(2)}</span>
             </div>
           </div>
         </Collapse>

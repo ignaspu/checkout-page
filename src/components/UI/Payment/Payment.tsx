@@ -1,7 +1,7 @@
 import "./payment.scss";
 import "./delivery.css";
 import "./contact.css";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import * as Yup from "yup";
 import { useFormik } from "formik";
 import Amex from "../../../svg/Amex";
@@ -14,9 +14,13 @@ import countriesAndStates from "../../../utils/countries";
 import WhyChoose from "../WhyChoose/WhyChoose";
 import useIsDesktop from "../../../utils/screen";
 import Circle from "../../../svg/Circle";
+import { ProductContext } from "../../../context/ProductContext";
 
 const Payment = () => {
   const isDesktopSize = useIsDesktop();
+  const { products, totalAmount } = useContext(ProductContext) || {
+    products: [],
+  };
   const [country, setCountry] = useState<string>("");
   const [state, setState] = useState<string>("");
   const firstCountry = Object.keys(countriesAndStates)[0];
@@ -92,7 +96,12 @@ const Payment = () => {
       nameOnCard: Yup.string().required("Name on card is required"),
     }),
     onSubmit: (values, { resetForm }) => {
-      localStorage.setItem("paymentDetails", JSON.stringify(values));
+      const orderDetails = {
+        ...values,
+        products,
+        totalAmount: totalAmount?.toFixed(2),
+      };
+      localStorage.setItem("orderDetails", JSON.stringify(orderDetails));
       resetForm();
       setCountry(firstCountry);
       setState(firstState);
